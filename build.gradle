@@ -1,0 +1,26 @@
+apply plugin: 'java' 
+apply plugin: 'war'
+apply from: 'https://raw.github.com/gretty-gradle-plugin/gretty/master/pluginScripts/gretty.plugin'
+apply plugin: 'eclipse'
+ 
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+ 
+dependencies {
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version:'1.7.21'
+    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    implementation group: 'org.keycloak', name: 'keycloak-servlet-filter-adapter', version: '18.0.2'
+    implementation group: 'org.keycloak', name: 'keycloak-adapter-spi', version: '18.0.1'
+    implementation group: 'org.keycloak', name: 'keycloak-core', version: '18.0.2'
+    implementation group: 'org.keycloak', name: 'keycloak-adapter-core', version: '18.0.2'
+    compileOnly group: 'org.keycloak', name: 'keycloak-services', version: '18.0.2'
+    implementation group: 'org.keycloak', name: 'keycloak-authz-client', version: '18.0.2'
+}
+ 
+gretty {
+    httpPort = 8080
+    contextPath = '/app-authz-vanilla'
+}
+
